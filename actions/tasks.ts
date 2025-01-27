@@ -5,12 +5,14 @@ import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 import { z } from 'zod'
 
+// GET MANY
 export async function getTasks() {
   const data = await fetch(`${process.env.BASE_API_ROUTE}/tasks`)
   const tasks = await data.json()
   return tasks
 }
 
+// GET ONE
 export async function getTask(id: number) {
   const data = await fetch(`${process.env.BASE_API_ROUTE}/tasks/${id}`)
   const task = await data.json()
@@ -22,8 +24,8 @@ const SubmitTaskSchema = z.object({
   color: z.string()
 })
 
+// CREATE
 export async function createTask(formData: FormData) {
-
   const validatedFields = SubmitTaskSchema.safeParse({
     title: formData.get("title"),
     color: formData.get("color")
@@ -64,6 +66,7 @@ export async function createTask(formData: FormData) {
   }
 }
 
+// UPDATE COMPLETED STATUS
 export async function finishTask(id: number, completed: boolean) {
   const data = {
     id: id,
@@ -88,7 +91,7 @@ export async function finishTask(id: number, completed: boolean) {
   }
 }
 
-
+// UPDATE
 export async function updateTask(id: number, formData: FormData) {
   const validatedFields = SubmitTaskSchema.safeParse({
     title: formData.get("title"),
@@ -130,6 +133,7 @@ export async function updateTask(id: number, formData: FormData) {
   }
 }
 
+// DELETE
 export async function deleteTask(id: number) {
   const res = await fetch(`${process.env.BASE_API_ROUTE}/tasks/${id}`, {
     method: 'DELETE',

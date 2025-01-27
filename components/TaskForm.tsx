@@ -4,50 +4,12 @@ import { createTask, updateTask } from "@/actions/tasks"
 import { Task as TaskType} from "@/types/types"
 import Image from "next/image"
 import { useState, FormEvent } from "react"
+import { colors } from "@/lib/data"
 
 const TaskForm = ({ task } : { task: TaskType | null }) => {
   const isNewForm = !task
   const defaultColor = isNewForm ? "" : task.color
   const [selectedColor, setSelectedColor] = useState(defaultColor)
-
-  const colors = [
-    {
-      name: 'Red',
-      value: "#FF3B30"
-    },
-    {
-      name: 'Orange',
-      value: "#FF9500"
-    },
-    {
-      name: 'Yellow',
-      value: "#FFCC00"
-    },
-    {
-      name: 'Green',
-      value: "#34C759"
-    },
-    {
-      name: 'Blue',
-      value: "#007AFF"
-    },
-    {
-      name: 'Indigo',
-      value: "#5856D6"
-    },
-    {
-      name: 'Purple',
-      value: "#AF52DE"
-    },
-    {
-      name: 'Pink',
-      value: "#FF2D55"
-    },
-    {
-      name: 'Brown',
-      value: "#A2845E"
-    },
-  ]
 
   const colorMap = colors.map(color => {
     return (
@@ -78,8 +40,6 @@ const TaskForm = ({ task } : { task: TaskType | null }) => {
 
   return (
     <form onSubmit={submitForm} className='mt-10'>
-      {/* Hidden to use FormData on submit. */}
-
       <label htmlFor="title">
         <p className="text-primary text-sm font-bold mb-3">Title</p>
         <input 

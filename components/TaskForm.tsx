@@ -66,10 +66,13 @@ const TaskForm = ({ task } : { task: TaskType | null }) => {
     const formData = new FormData(e.currentTarget)
 
     if(isNewForm){
-      createTask(formData)
+      const returnData = await createTask(formData)
+      if(!returnData) return;
+      alert(returnData.msg)
     } else {
-      console.log(task.id)
-      updateTask(task.id, formData)
+      const returnData = await updateTask(task.id, formData)
+      if(!returnData) return;
+      alert(returnData.msg)
     }
   }
 

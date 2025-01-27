@@ -29,7 +29,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#1A1A1A] flex flex-col justify-center items-center`}
       >
         <Header />
-        <main className="max-w-3xl w-full">
+        <main className="max-w-3xl w-full p-4">
           {children}
         </main>
       </body>

@@ -11,7 +11,7 @@ const ReturnButton = () => {
         width={24}
         height={24}
         alt="Return"
-        className="mt-16"
+        className="mt-4 md:mt-16"
       />
     </Link>
   )

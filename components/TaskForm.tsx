@@ -53,7 +53,7 @@ const TaskForm = ({ task } : { task: TaskType | null }) => {
     return (
       <div 
         key={color.name} 
-        className={`w-14 h-14 rounded-full mr-4 border-2 cursor-pointer hover:border-white ${color.value === selectedColor ? "border-white" : "border-transparent"}`} 
+        className={`w-14 h-14 rounded-full mr-4 mb-2 border-2 cursor-pointer hover:border-white ${color.value === selectedColor ? "border-white" : "border-transparent"}`} 
         style={{backgroundColor: color.value}}
         onClick={() => setSelectedColor(color.value)}
       >
@@ -92,7 +92,7 @@ const TaskForm = ({ task } : { task: TaskType | null }) => {
 
       <label htmlFor="color-pick">
         <p className="text-primary text-sm font-bold mb-3">Color</p>
-        <div className='flex'>
+        <div className='flex flex-wrap'>
           {colorMap}
         </div>
       </label>
